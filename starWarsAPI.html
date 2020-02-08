@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Star Wars</title>
+</head>
+
+<body>
+  <div id="lukeSkywalker"></div>
+  <div id="darthVader">
+    <button onclick="darthVader()">DARTH VADER</button>
+  </div>
+
+
+  <script>
+    function lukeSkywalker() {
+      fetch("https://swapi.co/api/people/1")
+        .then(response => response.json())
+        .then(myJson => {
+          document.getElementById("lukeSkywalker").innerHTML = "<pre>" + JSON.stringify(myJson, null, " ") + "</pre>"
+        })
+        .catch(err => {
+          console.log("Error is:", err)
+        })
+    }
+
+    function darthVader() {
+      fetch(`https://swapi.co/api/people/4/`)
+        .then(response => response.json())
+        .then(myJson => {
+          document.getElementById("darthVader").innerHTML = "<pre>" + JSON.stringify(myJson, null, " ") + "</pre>"
+        })
+        .catch(err => {
+          console.log("Error is:", err)
+        })
+    }
+
+    lukeSkywalker()
+  </script>
+</body>
+
+</html>
